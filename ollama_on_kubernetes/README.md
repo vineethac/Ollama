@@ -116,7 +116,7 @@ spec:
 
 * If you take a look at the deployment yaml spec, you can see we are pulling multiple models like mistral, llama2, and neural-chat into the ollama container.
 
-## Verify
+## Verify and prompt
 ```
 ❯ KUBECONFIG=gckubeconfig kubectl get deploy ollama
 NAME     READY   UP-TO-DATE   AVAILABLE   AGE
@@ -153,7 +153,7 @@ Ollama is running
 ❯
 ```
 
-* You can also exec into the ollma pod and prompt it.
+* You can also exec into the ollama pod and prompt it.
 ```
 ❯ KUBECONFIG=gckubeconfig kubectl get po --selector app=ollama
 NAME                      READY   STATUS    RESTARTS   AGE
