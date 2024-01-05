@@ -1,6 +1,8 @@
 ## Overview
-* Ollama can be used to deploy and run large language models (LLM) locally. 
-* In this exercise we will deploy Ollama to a Kubernetes cluster.
+* Docker published [GenAI stack](https://www.docker.com/blog/introducing-a-new-genai-stack/) around Oct 2023 which consists of large language models (LLMs) from Ollama, vector and graph databases from Neo4j, and the LangChain framework.
+* These utilities can help developers with the resources they need to kick-start creating new applications using generative AI. 
+* Ollama can be used to deploy and run LLMs locally. 
+* In this exercise we will deploy Ollama to a Kubernetes cluster and prompt it.
 
 ## Access to a Kubernetes cluster
 * In my case I am using a Tanzu Kubernetes Cluster (TKC) running on vSphere with Tanzu 7u3 platform powered by Dell PowerEdge R640 servers.
