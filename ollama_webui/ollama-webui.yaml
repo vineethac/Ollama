@@ -1,0 +1,86 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ollama-webui-data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: wcp-ccs-default
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ollama-webui
+  name: ollama-webui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama-webui
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ollama-webui
+    spec:
+      restartPolicy: Always
+      containers:
+      - image: ghcr.io/ollama-webui/ollama-webui:main
+        env:
+        - name: OLLAMA_API_BASE_URL
+          value: http://ollama:11434/api
+        name: ollama-webui
+        ports:
+        - containerPort: 8080
+        resources: {}
+        volumeMounts:
+          - name: ollama-webui-data
+            mountPath: /app/backend/data
+      volumes:
+      - name: ollama-webui-data
+        persistentVolumeClaim:
+          claimName: ollama-webui-data-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama-webui
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: ollama-webui
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app.kubernetes.io/instance: ollama-webui
+  name: ollama-webui-ing
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ollama-webui-vineethac-poc.test.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: ollama-webui
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+
