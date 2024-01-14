@@ -1,11 +1,12 @@
 ## Overview
-In this exercise we will take a look at deploying a Web UI on Kubernetes that can interact with Ollama and prompt the available LLMs.
+* In this exercise we will take a look at deploying a Web UI on Kubernetes that can interact with Ollama and prompt the available LLMs.
+* This will give you a ChatGPT like experience while interacting with different language models.
 
 ## Prerequisites
 * Access to a Kubernetes cluster.
 * [Deploy Ollama on the Kubernetes cluster](https://github.com/vineethac/Ollama/tree/main/ollama_on_kubernetes)
 
-## Deploy the Ollama Web UI on the Kubernetes cluster
+## Deploy Ollama Web UI on Kubernetes
 * Ollama is already deployed on the cluster.
 
 ```
@@ -22,7 +23,7 @@ endpoints/ollama   192.168.1.26:11434,192.168.5.13:11434,192.168.8.7:11434   11d
 ❯
 ```
 
-* Deploy the Web UI.
+* Deploy the Web UI. Note that you may need to check/ modify `OLLAMA_API_BASE_URL` in the deployment yaml spec depending where your Ollama is running/ exposed. 
 
 ```
 ❯ KUBECONFIG=gckubeconfig k apply -f ollama-webui.yaml
