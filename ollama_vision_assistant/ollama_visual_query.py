@@ -35,7 +35,7 @@ def main():
 
     encoded_string = generate_image_base64(image_file)
     response = query_image(encoded_string, prompt)
-    print(response)
+    print(json.dumps(response, indent=4))
 
 
 if __name__ == "__main__":
