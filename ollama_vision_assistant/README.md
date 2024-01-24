@@ -27,7 +27,16 @@ root@debug:/#
 ```
 
 ## Prompting the model
-Note: In your case, you may need to modify `url` in the python script based on where Ollama is running.
+Note: In your case, you may need to modify `url` in the python script based on where Ollama is running.  
+
+For example, I am using the following image for prompting the LLaVA model.  
+
+[<img src="images/stock-photo-biker-riding-scenic-path-in-beautiful-summer-mountain-scenery-dolomites-italy-european-alps-1802223193.jpg" width="450"/>](images/stock-photo-biker-riding-scenic-path-in-beautiful-summer-mountain-scenery-dolomites-italy-european-alps-1802223193.jpg)
+
+
+Prompt: `describe the picture and what are the essentials that one need to carry generally while going these kind of places?`
+
+
 
 ```
 root@debug:/# python3 query_image.py --help
@@ -43,7 +52,14 @@ root@debug:/# python3 query_image.py --path=images/stock-photo-biker-riding-scen
 {
     "model": "llava",
     "created_at": "2024-01-23T17:41:27.771729767Z",
-    "response": " The image shows a man riding his bicycle on a country road, surrounded by beautiful scenery and mountains. He appears to be enjoying the ride as he navigates through the countryside. \n\nWhile cycling in such environments, an essential item one would need to carry is a water bottle or hydration pack, to ensure they stay well-hydrated during the journey. In addition, it's important to have a map or GPS device to navigate through potentially less familiar routes and avoid getting lost. Other useful items for cyclists may include a multi-tool, first aid kit, bike lock, snacks, spare clothes, and a small portable camping stove if planning an overnight stay in the wilderness.",
+    "response": " The image shows a man riding his bicycle on a country road, surrounded by 
+    beautiful scenery and mountains. He appears to be enjoying the ride as he navigates 
+    through the countryside. \n\nWhile cycling in such environments, an essential item one 
+    would need to carry is a water bottle or hydration pack, to ensure they stay well-hydrated 
+    during the journey. In addition, it's important to have a map or GPS device to navigate 
+    through potentially less familiar routes and avoid getting lost. Other useful items for 
+    cyclists may include a multi-tool, first aid kit, bike lock, snacks, spare clothes, 
+    and a small portable camping stove if planning an overnight stay in the wilderness.",
     "done": true,
     "context": [
         29871,
